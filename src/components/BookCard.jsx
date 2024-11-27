@@ -5,6 +5,7 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Grid2,
   IconButton,
   Rating,
   Typography,
@@ -63,16 +64,18 @@ const BookCard = ({ book }) => {
         <Typography variant="body2" color="text.secondary">
           {book.review}
         </Typography>
-        <Rating
-          name="book-rating"
-          value={rating}
-          onChange={handleRatingChange}
-          readOnly={true}
-        />
+        <Grid2 display="flex" justifyContent="space-between">
+          <Rating
+            name="book-rating"
+            value={rating}
+            onChange={handleRatingChange}
+            readOnly={true}
+          />
 
-        <Link to="/reviews" state={{ bookID: book._id }}>
-          Reviews
-        </Link>
+          <Link to="/reviews" state={{ bookID: book._id }}>
+            Reviews
+          </Link>
+        </Grid2>
       </CardContent>
       <Box
         sx={{

@@ -11,8 +11,11 @@ const bookService = {
     return response.data;
   },
 
-  getBookById: async (id) => {
-    const response = await api.get(`/books/${id}`);
+  getBookById: async (id, token) => {
+    const tokenVal = token.replace(/"/g, "");
+    const response = await api.get(`/books/${id}`, {
+      headers: { Authorization: `Bearer ${tokenVal}` },
+    });
     return response.data;
   },
 
