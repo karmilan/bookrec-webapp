@@ -3,9 +3,11 @@ import { IconButton } from "@mui/material";
 import Box from "@mui/material/Box";
 import * as React from "react";
 import { Route, Routes } from "react-router";
+import BookForm from "../components/BookForm";
 import { BookPage } from "../pages/BookPage";
 import CurrentlyReading from "../pages/CurrentlyReading";
 import LibraryPage from "../pages/LibraryPage";
+import ReviewPage from "../pages/ReviewPage";
 import WishList from "../pages/WishList";
 import Navbar from "./NavBar";
 import SideBar from "./SideBar";
@@ -69,6 +71,12 @@ const Layout = () => {
           </Routes>
           <Routes>
             <Route path="/library" element={<LibraryPage />} />
+          </Routes>
+          <Routes>
+            <Route path="/addbook" element={<BookForm />} />
+          </Routes>
+          <Routes>
+            <Route path="/reviews" element={<ReviewPage />} />
           </Routes>
         </Box>
       </Box>

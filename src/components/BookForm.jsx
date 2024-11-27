@@ -54,11 +54,15 @@ const BookForm = () => {
 
     try {
       const tokenVal = currentToken.replace(/"/g, "");
-      await axios.post("http://localhost:5000/api/books", data, {
+      console.log("data>>>", data);
+      await axios.post(`${import.meta.env.VITE_API_URL}/books`, data, {
         headers: {
           Authorization: `Bearer ${tokenVal}`,
         },
       });
+
+      // await bookService.addBook(data, currentToken);
+
       setFormData({
         title: "",
         author: "",
@@ -66,7 +70,9 @@ const BookForm = () => {
         description: "",
         image: null,
       });
+      console.log("data", data);
     } catch (err) {
+      console.log("data", data);
       console.error("Error saving book", err);
     }
   };

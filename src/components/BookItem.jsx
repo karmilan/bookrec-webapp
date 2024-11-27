@@ -24,7 +24,7 @@ const BookItem = ({ book, onDelete, onUpdate }) => {
       sx={{
         maxWidth: 247,
         mb: 2,
-        backgroundColor: "rgba(255, 255, 255, 0.85)",
+        backgroundColor: "rgba(255, 255, 255, 0.9)",
         boxShadow: 3,
         borderRadius: 2,
       }}
@@ -32,14 +32,8 @@ const BookItem = ({ book, onDelete, onUpdate }) => {
       <Box sx={{ position: "relative" }}>
         <CardMedia
           component="img"
-          sx={{
-            width: "247px",
-            height: "382px",
-            objectFit: "cover",
-            borderRadius: "8px 8px 0 0",
-          }}
-          image={book.image}
-          alt={book.title}
+          sx={{ width: "247px", height: "300px", objectFit: "cover" }}
+          image={`${import.meta.env.VITE_API_URL}/${book.image}`}
         />
         <IconButton
           aria-label="add to favorites"

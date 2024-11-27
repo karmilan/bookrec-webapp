@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import { Link } from "react-router";
 
 const BookCard = ({ book }) => {
   const [isFavorited, setIsFavorited] = useState(false);
@@ -32,7 +33,7 @@ const BookCard = ({ book }) => {
         component="img"
         sx={{ width: "247px", height: "300px", objectFit: "cover" }}
         height="140"
-        image={`http://localhost:5000/${book.image}`}
+        image={`${import.meta.env.VITE_API_URL}/${book.image}`}
       />
       <IconButton
         onClick={handleFavorite}
@@ -68,6 +69,10 @@ const BookCard = ({ book }) => {
           onChange={handleRatingChange}
           readOnly={true}
         />
+
+        <Link to="/reviews" state={{ bookID: book._id }}>
+          Reviews
+        </Link>
       </CardContent>
       <Box
         sx={{
@@ -77,15 +82,7 @@ const BookCard = ({ book }) => {
           px: 2,
           pb: 2,
         }}
-      >
-        {/* <IconButton aria-label="add to favorites" onClick={handleFavorite}>
-          {isFavorited ? (
-            <FavoriteIcon color="error" />
-          ) : (
-            <FavoriteBorderIcon />
-          )}
-        </IconButton> */}
-      </Box>
+      ></Box>
     </Card>
   );
 };

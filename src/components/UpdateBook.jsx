@@ -7,9 +7,9 @@ import {
   DialogTitle,
   TextField,
 } from "@mui/material";
-import axios from "axios";
 import React, { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
+import bookService from "../services/BookService";
 
 const UpdateBook = ({ book, onClose, onUpdate }) => {
   const { token } = useContext(AuthContext);
@@ -37,20 +37,26 @@ const UpdateBook = ({ book, onClose, onUpdate }) => {
     }
 
     try {
-      const tokenVal = currentToken.replace(/"/g, "");
-      const response = await axios.put(
-        `http://localhost:5000/api/books/${book._id}`,
+      // const tokenVal = currentToken.replace(/"/g, "");
+      // const response = await axios.put(
+      //   `http://localhost:5000/api/books/${book._id}`,
+      //   formData,
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${tokenVal}`,
+      //     },
+      //   }
+      // );
+      const response = await bookService.updateBook(
+        book._id,
         formData,
-        {
-          headers: {
-            Authorization: `Bearer ${tokenVal}`,
-          },
-        }
+        currentToken
       );
-      console.log("data", formData);
-      console.log("onUpdate", response.data);
 
-      onUpdate(response.data);
+      console.log("data", formData);
+      console.log("onUpdate", response);
+
+      onUpdate(response);
       onClose();
     } catch (err) {
       console.error("Error updating book", err);
