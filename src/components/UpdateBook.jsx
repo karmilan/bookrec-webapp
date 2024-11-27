@@ -1,10 +1,16 @@
 import {
   Box,
   Button,
+  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
+  FormControlLabel,
+  InputLabel,
+  MenuItem,
+  Select,
   TextField,
 } from "@mui/material";
 import React, { useContext, useState } from "react";
@@ -18,10 +24,11 @@ const UpdateBook = ({ book, onClose, onUpdate }) => {
   console.log("BKId", book._id);
 
   const onChange = (e) => {
-    const { name, value, type, files } = e.target;
+    const { name, value, type, files, checked } = e.target;
     setFormData({
       ...formData,
       [name]: type === "file" ? files[0] : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
@@ -32,6 +39,8 @@ const UpdateBook = ({ book, onClose, onUpdate }) => {
     data.append("author", formData.author);
     data.append("genre", formData.genre);
     data.append("description", formData.description);
+    data.append("readingStatus", formData.readingStatus);
+    data.append("isFavourite", formData.isFavourite);
     if (formData.image) {
       data.append("image", formData.image);
     }
@@ -107,6 +116,31 @@ const UpdateBook = ({ book, onClose, onUpdate }) => {
             multiline
             rows={4}
             fullWidth
+          />
+          <FormControl fullWidth variant="outlined">
+            {" "}
+            <InputLabel>Reading Status</InputLabel>{" "}
+            <Select
+              name="readingStatus"
+              value={formData.readingStatus}
+              onChange={onChange}
+              label="Reading Status"
+            >
+              {" "}
+              <MenuItem value="Not Started">Not Started</MenuItem>{" "}
+              <MenuItem value="Currently Reading">Currently Reading</MenuItem>{" "}
+              <MenuItem value="Completed">Completed</MenuItem>{" "}
+            </Select>{" "}
+          </FormControl>{" "}
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="isFavourite"
+                checked={formData.isFavourite}
+                onChange={onChange}
+              />
+            }
+            label="Favourite"
           />
           <input
             id="upload-image"

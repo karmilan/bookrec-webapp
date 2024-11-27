@@ -4,7 +4,7 @@ import BookCard from "../components/BookCard";
 import AuthContext from "../context/AuthContext";
 import bookService from "../services/BookService";
 
-const WishList = () => {
+const CompletedBookPage = () => {
   const { token } = useContext(AuthContext);
   const currentToken = token || localStorage.getItem("token");
 
@@ -17,11 +17,10 @@ const WishList = () => {
       try {
         console.log("token>>>>", currentToken);
         const response = await bookService.getAllBooks(currentToken);
-        const favList = response.filter((book) => book.isFavourite);
-
-        console.log(">>>>", response);
-        console.log("favList", favList);
-        setBooks(favList);
+        const completedReading = response.filter(
+          (book) => book.readingStatus === "Completed"
+        );
+        setBooks(completedReading);
       } catch (err) {
         setError(err.message);
       }
@@ -29,7 +28,6 @@ const WishList = () => {
 
     fetchBooks();
   }, []);
-  console.log("book>>>>", books);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -47,4 +45,4 @@ const WishList = () => {
   );
 };
 
-export default WishList;
+export default CompletedBookPage;

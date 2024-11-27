@@ -5,6 +5,7 @@ import * as React from "react";
 import { Route, Routes } from "react-router";
 import BookForm from "../components/BookForm";
 import { BookPage } from "../pages/BookPage";
+import CompletedBookPage from "../pages/CompletedBookPage";
 import CurrentlyReading from "../pages/CurrentlyReading";
 import LibraryPage from "../pages/LibraryPage";
 import ReviewPage from "../pages/ReviewPage";
@@ -77,6 +78,9 @@ const Layout = () => {
           </Routes>
           <Routes>
             <Route path="/reviews" element={<ReviewPage />} />
+          </Routes>
+          <Routes>
+            <Route path="/completed-books" element={<CompletedBookPage />} />
           </Routes>
         </Box>
       </Box>

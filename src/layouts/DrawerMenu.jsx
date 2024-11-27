@@ -65,6 +65,7 @@ const DrawerMenu = () => {
         listColor="white"
         listIconColor="white"
         listItemText="Completed"
+        linkTo="/completed-books"
         listIcon={<ThumbUpAlt />}
       />
 
