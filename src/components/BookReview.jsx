@@ -26,7 +26,7 @@ const BookReview = ({ bookId }) => {
     try {
       const tokenVal = currentToken.replace(/"/g, "");
       const response = await axios.get(
-        `http://localhost:5000/api/reviews/book/${bookId}`,
+        `${import.meta.env.VITE_API_URL}/reviews/book/${bookId}`,
         {
           headers: {
             Authorization: `Bearer ${tokenVal}`,
@@ -52,7 +52,7 @@ const BookReview = ({ bookId }) => {
       const tokenVal = currentToken.replace(/"/g, "");
 
       const response = await axios.post(
-        "http://localhost:5000/api/reviews",
+        `${import.meta.env.VITE_API_URL}/reviews`,
         {
           bookId,
           rating: newReview.rating,
