@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router";
 
 const Login = ({
   username,
@@ -72,6 +73,9 @@ const Login = ({
           >
             Log In
           </Button>
+          <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+            Need an account? <Link to="/register">Register</Link>
+          </Typography>
         </Box>
       </Paper>
     </Container>

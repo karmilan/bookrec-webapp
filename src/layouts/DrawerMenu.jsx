@@ -1,10 +1,14 @@
 import {
   Assistant,
   Favorite,
+  Home,
+  LibraryBooks,
   LocalLibrary,
+  OnlinePrediction,
   ThumbUpAlt,
 } from "@mui/icons-material";
 import {
+  Box,
   List,
   ListItem,
   ListItemButton,
@@ -45,6 +49,23 @@ const DrawerList = ({
 const DrawerMenu = () => {
   return (
     <>
+      <Box display={{ md: "none" }}>
+        <DrawerList
+          listColor="white"
+          listIconColor="white"
+          listItemText="Home"
+          linkTo="/"
+          listIcon={<Home />}
+        />
+
+        <DrawerList
+          listColor="white"
+          listIconColor="white"
+          listItemText="Library"
+          linkTo="/library"
+          listIcon={<LibraryBooks />}
+        />
+      </Box>
       <DrawerList
         listColor="white"
         listIconColor="white"
@@ -74,6 +95,13 @@ const DrawerMenu = () => {
         listIconColor="white"
         listItemText="Recommendations"
         listIcon={<Assistant />}
+      />
+
+      <DrawerList
+        listColor="white"
+        listIconColor="white"
+        listItemText="Discord"
+        listIcon={<OnlinePrediction />}
       />
     </>
   );

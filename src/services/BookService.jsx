@@ -3,6 +3,8 @@ import api from "./Api";
 const bookService = {
   getAllBooks: async (token) => {
     const tokenVal = token.replace(/"/g, "");
+    console.log("token", token);
+
     const response = await api.get("/books", {
       headers: { Authorization: `Bearer ${tokenVal}` },
     });

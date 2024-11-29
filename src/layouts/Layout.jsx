@@ -1,5 +1,3 @@
-import { Menu } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
 import Box from "@mui/material/Box";
 import * as React from "react";
 import { Route, Routes } from "react-router";
@@ -38,15 +36,6 @@ const Layout = () => {
     <>
       <Navbar />
       <Box sx={{ display: { xs: "contents", sm: "flex" } }}>
-        <IconButton
-          color="inherit"
-          edge="start"
-          onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: "none" } }}
-        >
-          <Menu />
-        </IconButton>
-
         <SideBar
           drawerWidth={drawerWidth}
           mobileOpen={mobileOpen}

@@ -1,4 +1,4 @@
-import AdbIcon from "@mui/icons-material/Adb";
+import { AutoStories } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
@@ -13,6 +13,7 @@ import * as React from "react";
 import { useContext } from "react";
 import { Link } from "react-router";
 import AuthContext from "../context/AuthContext";
+import DrawerMenu from "./DrawerMenu";
 import MenuItems from "./MenuItems";
 
 const Navbar = () => {
@@ -56,7 +57,7 @@ const Navbar = () => {
             }}
             to="/"
           >
-            <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+            <AutoStories sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             <Typography
               variant="h6"
               noWrap
@@ -70,11 +71,16 @@ const Navbar = () => {
                 textDecoration: "none",
               }}
             >
-              LOGO
+              BRS
             </Typography>
           </Link>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -101,11 +107,16 @@ const Navbar = () => {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              <MenuItems navMenuText="Home" />
-              <MenuItems navMenuText="Library" />
+              {/* <MenuItems linkTo={"/"} navMenuText="Home" />
+                <MenuItems linkTo={"/library"} navMenuText="Library" /> */}
+              <Box
+                sx={{ backgroundImage: "linear-gradient(#de4561, #ad1aad)" }}
+              >
+                <DrawerMenu />
+              </Box>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <AutoStories sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -122,7 +133,7 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            BRS
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {/* {pages.map((page) => (
