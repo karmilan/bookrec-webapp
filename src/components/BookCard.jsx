@@ -48,8 +48,8 @@ const BookCard = ({ book }) => {
         }}
       >
         {" "}
-        {isFavorited ? (
-          <FavoriteIcon color="error" />
+        {book.isFavourite ? (
+          <FavoriteIcon sx={{ color: "red" }} />
         ) : (
           <FavoriteBorderIcon />
         )}{" "}
