@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // logic to check if a user is already authenticated
+    // check if a user is already authenticated
     setUser(user || localStorage.getItem("user"));
     setToken(token || localStorage.getItem("token"));
   }, []);
